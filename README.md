@@ -39,13 +39,8 @@ $ RUN sakila-data.sql
 ```
 
 
-
-
-
 ### Todos
-
- - Testiranje na TRAVIS CI --> primjer: https://travis-ci.org/github/mrvic/fakultet
- - Deploy na Heroku
- - Code check https://styleci.io/
- - Postaviti XAMPP vhost
- - 
+ - [ ] Testiranje na TRAVIS CI --> primjer: https://travis-ci.org/github/mrvic/fakultet
+ - [ ] Deploy na Heroku
+ - [ ] Code check https://styleci.io/
+ - [x] Postaviti XAMPP vhost
