@@ -2,10 +2,28 @@
 ## Sakila Github:
 [Sakila Github](https://github.com/AlgebraPHP2020/sakila)
 
-(optional) Third:
+Kloniranje repozitorija:
 ```sh
-$ karma test
+$ git clone https://github.com/AlgebraPHP2020/sakila.git
 ```
+
+Kreiranje laravel projekta:
+```sh
+$ composer create-project --prefer-dist laravel/laravel sakila-tmp
+```
+
+Uci u direktorij sakila:
+```sh
+$ cd sakila/
+```
+
+Pokrenuti web server:
+```sh
+$ php artisan serve
+```
+
+
+
 
 
 ### Todos
