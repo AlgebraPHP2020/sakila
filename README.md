@@ -25,6 +25,7 @@ $ php artisan serve
 ```
 
 ## Postavka SAKILA baze podataka:
+[Sakila baza](https://dev.mysql.com/doc/index-other.html)
 Dohvati sakila bazu:
 ```sh
 $ cd database
@@ -43,5 +44,8 @@ $ RUN sakila-data.sql
 
 ### Todos
 
- - Write MORE Tests
- - Add Night Mode
+ - Testiranje na TRAVIS CI --> primjer: https://travis-ci.org/github/mrvic/fakultet
+ - Deploy na Heroku
+ - Code check https://styleci.io/
+ - Postaviti XAMPP vhost
+ - 
