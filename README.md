@@ -1,6 +1,9 @@
 # sakila
 ## Sakila Github:
 [Sakila Github](https://github.com/AlgebraPHP2020/sakila)
+https://getcomposer.org/download/
+https://laravel.com/docs/7.x
+
 
 
 ## Postrupak instalacije:

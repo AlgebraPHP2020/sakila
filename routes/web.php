@@ -13,6 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/mojtest', function () {
+    return view('prvi.mojtest', ['name' => 'Mali Perica']);
+});
+
+Route::redirect('/here', '/there',301);
+Route::get('/there', function () {
+    return "Dobrodosli u There";
+});
+
+Route::post('/test', function () {
+    return "Opa, znaci radi i POST !!!";
+});
+Route::get('/test', function () {
+    return "Cestitam, vas test je uspio";
+});
 Route::get('/', function () {
     return view('welcome');
 });
+
