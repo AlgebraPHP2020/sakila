@@ -4,6 +4,9 @@
 https://getcomposer.org/download/
 https://laravel.com/docs/7.x
 
+## Sakila Travis CI
+https://travis-ci.org/github/AlgebraPHP2020/sakila
+<img src="https://travis-ci.org/github/AlgebraPHP2020/sakila.svg?branch=master" alt="build:passed">
 
 
 ## Postrupak instalacije:
