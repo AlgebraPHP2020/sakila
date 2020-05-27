@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Actor;
+use Illuminate\Http\Request;
 
 class ActorsController extends Controller
 {
