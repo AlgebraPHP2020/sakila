@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/actors', "ActorsController@index");
 
 Route::get('/mojtest', function () {
     return view('prvi.mojtest', ['name' => 'Mali Perica']);
