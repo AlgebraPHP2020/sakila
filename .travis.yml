@@ -1,6 +1,6 @@
 language: php
 php:
-  - 7.3.10
+  - 7.4.6
 sudo: required
 dist: trusty
 
