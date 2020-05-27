@@ -1,6 +1,7 @@
 language: php
 php:
-  - 7.4.6
+   - 7.4snapshot
+   - nightly
 sudo: required
 dist: trusty
 
