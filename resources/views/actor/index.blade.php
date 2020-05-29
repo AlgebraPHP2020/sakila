@@ -23,10 +23,10 @@
 
 
   <li>
-    <a href='{{url("/predmets/{$g->actor_id}/edit")}}'>
+    <a href='{{url("/actors/{$g->actor_id}/edit")}}'>
         <span class="label label-info">Edit</span></a>
     
-    &nbsp;&nbsp;<a href='{{url("/predmets/{$g->actor_id}")}}'> {{$g->first_name }}</a>
+    &nbsp;&nbsp;<a href='{{url("/actors/{$g->actor_id}")}}'> {{$g->first_name }}</a>
   </li>
 
   @endforeach

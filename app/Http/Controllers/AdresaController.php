@@ -1,24 +1,31 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use App\Actor;
+use App\Adresa;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\View\View;
 
-class ActorsController extends Controller
+class AdresaController extends Controller
 {
-    public function index() {
-        //return "hello";
-      // $predmets = Predmet::all();
-   $glumci = Actor::paginate(15);
-    //dd($predmets);
-//         echo '<ul>';
-//         foreach ($predmets as $key => $p) {
-//          echo '<li>'.$p->nazpred.'</li>';
-//         }
-//         echo '</ul>';
-    return view('actor.index', compact('glumci'));
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        //$adresa = Adresa::all();
+        $adresa = Adresa::paginate(10);
+
+        return view('adresa.index', compact('adresa'));
+        //return view('adresa.index', ['adresa' => adresa]); // moze i ovako
     }
-     /**
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return Response
@@ -47,74 +54,59 @@ class ActorsController extends Controller
      *
      * @return Response
      */
-    public function show(Actor $actor)
+    public function show(Adresa $adresa)  // jednostavno nece
+    // ovo smo morali jer je routa bila nazvana adrese umjesto adresa
+    // Route::resource('adrese','AdresaController');
+    // Ispravno:
+    // Route::resource('adresa','AdresaController');
+    //public function show($adresa_id)
     {
-//http://sakila.test/actors/7
-        /*
-      #attributes: array:4 [▼
-    "actor_id" => 7
-    "first_name" => "GRACE"
-    "last_name" => "MOSTEL"
-    "last_update" => "2006-02-15 04:34:33"
-  ]
-         */
+        //$adresa=Adresa::find($adresa_id);
+        // http://localhost:8000/adrese/1
+        //return  $adresa->all();
+        //return  $adresa->find(1);
+        //$adresa=Adresa::find($adresa->id);
+        //dd($adresa);
 
-        return view('actor.show', ['actor' => $actor]);
+        return view('adresa.show', ['adresa' => $adresa]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Actor $actor
+     * @param Adresa $adresa
      *
      * @return Response
      */
-    public function edit(Actor $actor)
+    public function edit(Adresa $adresa)
     {
-        return view('actor.edit', ['actor' => $actor]);
+        return view('adresa.edit', ['adresa' => $adresa]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param Actor $actor
+     * @param Adresa  $adresa
      *
      * @return Response
      */
-    public function update(Request $request, Actor $actor)
+    public function update(Request $request, Adresa $adresa)
     {
-        //TODO Validacija na nacin Laravel 7
-     $validatedData = $request->validate([
-        'actor_id'    => 'required|numeric',
-        'first_name'  => 'required|string|max:5',
-        'last_name'   => 'required|string|max:45',
-    ]);
-     //$validated = $request->validated();
-     
-     
-//        $validator = Validator::make($request->all(), [
-//              'trgovina_id' => 'required|numeric',
-//              'country'     => 'required|string|max:191',
-//              'city'        => 'required|string|max:191',
-//              'pbr'         => 'required|string|max:191',
-//              'street'      => 'required|string|max:191',
-//        ]);
-//        if ($validator->fails()) {
-//            Session::flash('error', 'Greška, molim ispravno popuniti polja!');
-//
-//            return redirect('adresa/'.$trgovine->id.'/edit')
-//                    ->withErrors($validator)
-//                    ->withInput();
-//        } 
-     if (!$request->validated()) {
+        $validator = Validator::make($request->all(), [
+              'trgovina_id' => 'required|numeric',
+              'country'     => 'required|string|max:191',
+              'city'        => 'required|string|max:191',
+              'pbr'         => 'required|string|max:191',
+              'street'      => 'required|string|max:191',
+        ]);
+        if ($validator->fails()) {
             Session::flash('error', 'Greška, molim ispravno popuniti polja!');
 
-            return redirect('actors/'.$actor->actor_id.'/edit')
-                    ->withErrors($validatedData)
+            return redirect('adresa/'.$trgovine->id.'/edit')
+                    ->withErrors($validator)
                     ->withInput();
-     }
-        else {
+        } else {
             // store
             $adresa->trgovina_id = $request->input('trgovina_id');
             $adresa->country = $request->input('country');
