@@ -41,16 +41,16 @@ class CreateFilmsTable extends Migration
     {
         Schema::create('films', function (Blueprint $table) {
             $table->smallIncrements('film_id');
-            $table->string("title",128);
+            $table->string("title",128)->index('idx_title');
             $table->text("description")->nullable();
             $table->year("release_year");
             // language_id je u bazi smallint(3)
-            $table->tinyInteger("language_id")->index();
+            $table->tinyInteger("language_id")->index()->unsigned();
             
             //`original_language_id` TINYINT(3) UNSIGNED NULL,
             $table->tinyInteger("original_language_id")->index()->nullable()->unsigned();
             
-            $table->tinyInteger("rental_duration");  
+            $table->tinyInteger("rental_duration")->unsigned();  
             
             //`rental_rate` DECIMAL(4,2) NOT NULL DEFAULT '4.99',
             $table->decimal("rental_rate", 4, 2)->default('4.99');
