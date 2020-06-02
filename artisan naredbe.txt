@@ -2,5 +2,12 @@
 php artisan migrate
 php artisan migrate:rollback
 
+Ako mjenjamo timezone mramo ocistiti cache:
+$ php artisan config:cache
+
+$ php artisan make:seeder ActorSeeder
+php artisan db:seed --class=ActorSeeder
+
+
 
 
