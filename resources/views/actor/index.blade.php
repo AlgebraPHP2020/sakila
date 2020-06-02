@@ -6,16 +6,23 @@
 
 
 @section('content')
-<!-- Laravel < 7.* -->
- @if (Session::has('message'))
-	<div class="alert alert-success">{{ Session::get('message') }}
-  </div>
-@endif 
-
+<!-- @TODO prikazi poruku kada se doda nova glumica -->
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <!-- Laravel > 7.* -->
-@error('message') 
-    <div class="alert alert-success">{{ $message }}</div>
+@error('success') 
+<div class="alert alert-success">{{ $success }}</div>
 @enderror
+
+<a href='{{route('actors.create')}}'>
+    <span class="label label-info">Dodaj novi zapis</span></a>
 
 <h3>Lista glumaca:</h3>
 {{--
@@ -25,17 +32,26 @@
 
 {{ $glumci->links() }}
 <ol start="{{ $glumci->firstItem() }}">
-  @foreach ($glumci as $g)
+    @foreach ($glumci as $g)
 
 
-  <li>
-    <a href='{{url("/actors/{$g->actor_id}/edit")}}'>
-        <span class="label label-info">Edit</span></a>
-    
-    &nbsp;&nbsp;<a href='{{url("/actors/{$g->actor_id}")}}'> {{$g->first_name }} {{$g->last_name }}</a>
-  </li>
+    <li>
+        <a href='{{url("/actors/{$g->actor_id}/edit")}}'>
+            <span class="label label-info">Edit</span></a>
+         
+            <form class="form-inline" name="actor_delete" action="{{url("/actors/{$g->actor_id}")}}" method="POST" enctype="multipart/form-data">
+            @method('delete')
+            @csrf
+            <button type="submit" class="btn btn-danger">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+        </form>
 
-  @endforeach
+
+        &nbsp;&nbsp;<a href='{{url("/actors/{$g->actor_id}")}}'> {{$g->first_name }} {{$g->last_name }}</a>
+    </li>
+
+    @endforeach
 </ol>
 {{ $glumci->links() }}
 @endsection
