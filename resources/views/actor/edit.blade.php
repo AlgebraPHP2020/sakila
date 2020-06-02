@@ -1,19 +1,22 @@
 @extends('layouts.app')
-@section('title', 'Uredi {{ $actor->first_name }} {{ $actor->last_name }} ')
+@section('title', 'Uredi')
 @section('content_header')
 <h1>Glumci</h1>
 @stop
 
 
 @section('content')
-@if (Session::has('message'))
-<div class="alert alert-success">{{ Session::get('message') }}
-</div>
-@endif 
-@if (Session::has('error'))
-<div class="alert danger">{{ Session::get('error') }}
-</div>
-@endif 
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 
 <h3>Uredi glumice/glumca:</h3>
 

@@ -84,6 +84,9 @@ class ActorsController extends Controller
      */
     public function update(Request $request, Actor $actor)
     {
+        // lokalizacija koja radi samo za ovu rutu,
+        // za globalnu lokalizaciju editiraj config/app.php -> 'locale'
+        \Illuminate\Support\Facades\App::setLocale('hr');
         //TODO Validacija na nacin Laravel 7
      $validatedData = $request->validate([
         'actor_id'    => 'required|numeric',
