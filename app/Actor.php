@@ -20,4 +20,21 @@ class Actor extends Model
      * @var string
      */
     protected $primaryKey = 'actor_id';
+    
+     /**
+     * U bazi su sva imena zapisana velikim slovima (uppercase)
+     * Treba ih vratiti kao Prvo veliko slovo ostala mala
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getFirstNameAttribute($value) // first_name -> FirstName
+    {
+        return ucfirst(strtolower($value));
+       // return ucfirst($value);  // ovo ne radi!
+    }
+    public function getLastNameAttribute($value) // last_name -> LastName
+    {
+        return ucfirst(strtolower($value));
+    }
 }

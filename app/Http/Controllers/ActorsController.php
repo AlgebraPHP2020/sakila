@@ -90,9 +90,16 @@ class ActorsController extends Controller
         //TODO Validacija na nacin Laravel 7
      $validatedData = $request->validate([
         'actor_id'    => 'required|numeric',
-        'first_name'  => 'required|string|max:5',
-        'last_name'   => 'required|string|max:45',
+        'first_name'  => 'required|string|max:45|alpha',
+        'last_name'   => 'required|string|max:45|alpha',
     ]);
+     $actor->first_name = $request->input('first_name');
+     $actor->last_name = $request->input('last_name');
+     $actor->save(); // sacuvaj u bazu podataka
+            // redirect
+           // Session::flash('message', 'Uspješno izmjenjeni podaci glumca!');
+
+            return redirect()->route('actors.index');
      //$validated = $request->validated();
      
      
@@ -110,7 +117,7 @@ class ActorsController extends Controller
 //                    ->withErrors($validator)
 //                    ->withInput();
 //        } 
-     if (!$request->validated()) {
+     /*if (!$request->validated()) {
             Session::flash('error', 'Greška, molim ispravno popuniti polja!');
 
             return redirect('actors/'.$actor->actor_id.'/edit')
@@ -141,6 +148,7 @@ class ActorsController extends Controller
 
             return redirect()->route('adresa.index');
         }
+        */
     }
 
     /**

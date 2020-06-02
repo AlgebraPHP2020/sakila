@@ -6,10 +6,16 @@
 
 
 @section('content')
+<!-- Laravel < 7.* -->
  @if (Session::has('message'))
 	<div class="alert alert-success">{{ Session::get('message') }}
   </div>
 @endif 
+
+<!-- Laravel > 7.* -->
+@error('message') 
+    <div class="alert alert-success">{{ $message }}</div>
+@enderror
 
 <h3>Lista glumaca:</h3>
 {{--
@@ -26,7 +32,7 @@
     <a href='{{url("/actors/{$g->actor_id}/edit")}}'>
         <span class="label label-info">Edit</span></a>
     
-    &nbsp;&nbsp;<a href='{{url("/actors/{$g->actor_id}")}}'> {{$g->first_name }}</a>
+    &nbsp;&nbsp;<a href='{{url("/actors/{$g->actor_id}")}}'> {{$g->first_name }} {{$g->last_name }}</a>
   </li>
 
   @endforeach

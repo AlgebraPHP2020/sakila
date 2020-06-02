@@ -16,7 +16,9 @@
         </ul>
     </div>
 @endif
-
+@error('message')
+    <div class="alert alert-success">{{ $message }}</div>
+@enderror
 
 <h3>Uredi glumice/glumca:</h3>
 
