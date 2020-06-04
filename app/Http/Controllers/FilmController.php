@@ -14,7 +14,8 @@ class FilmController extends Controller
      */
     public function index()
     {
-        //
+        $filmovi= Film::all();
+        return view('films.index', compact('filmovi'));
     }
 
     /**
@@ -24,7 +25,8 @@ class FilmController extends Controller
      */
     public function create()
     {
-        //
+       $lista_jezika= \App\Language::all()->sortBy('name');
+       return view('films.create',compact('lista_jezika'));
     }
 
     /**
@@ -46,7 +48,7 @@ class FilmController extends Controller
      */
     public function show(Film $film)
     {
-        //
+        return view('films.show', compact('film'));
     }
 
     /**
@@ -57,7 +59,7 @@ class FilmController extends Controller
      */
     public function edit(Film $film)
     {
-        //
+         return view('films.edit', compact('film'));
     }
 
     /**
@@ -80,6 +82,7 @@ class FilmController extends Controller
      */
     public function destroy(Film $film)
     {
-        //
+        $film->delete();
+        return redirect()->route('films.index')->with('success', 'Film obrisan!');
     }
 }
