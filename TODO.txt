@@ -1,0 +1,7 @@
+1. Home page dizajn
+2. navigacija na HP
+3. podnavigacija na child stranicama
+4. MODEL films
+5. Model FILMS_ACTORS
+6. relacija films <---> actor
+7. relacija films <---> language
