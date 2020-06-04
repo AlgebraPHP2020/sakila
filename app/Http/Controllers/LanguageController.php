@@ -14,7 +14,8 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        //
+        $jezici = Language::all()->reverse(); //sve podatke iz tablice languages preko modela Language
+        return view('languages.index ', compact('jezici'));
     }
 
     /**
@@ -24,7 +25,7 @@ class LanguageController extends Controller
      */
     public function create()
     {
-        //
+        return view('languages.create');
     }
 
     /**
@@ -35,7 +36,14 @@ class LanguageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    $validatedData = $request->validate([
+        'name'  => 'required|string|max:20|alpha',
+    ]);
+     $language = new Language;
+     $language->name = $request->input('name');
+     $language->save(); // sacuvaj u bazu podataka
+
+     return redirect()->route('languages.index')->with('success', 'Novi jezik dodan!');
     }
 
     /**
@@ -46,7 +54,7 @@ class LanguageController extends Controller
      */
     public function show(Language $language)
     {
-        //
+        return view('languages.show', ['jez' => $language]);
     }
 
     /**
@@ -57,7 +65,7 @@ class LanguageController extends Controller
      */
     public function edit(Language $language)
     {
-        //
+       return view('languages.edit', ['jez' => $language]);
     }
 
     /**
@@ -69,7 +77,14 @@ class LanguageController extends Controller
      */
     public function update(Request $request, Language $language)
     {
-        //
+            $validatedData = $request->validate([
+        'language_id'    => 'required|numeric',
+        'name'  => 'required|string|max:20|alpha',
+    ]);
+     $language->name = $request->input('name');
+     $language->save(); // sacuvaj u bazu podataka
+
+     return redirect()->route('languages.index');
     }
 
     /**
@@ -80,6 +95,7 @@ class LanguageController extends Controller
      */
     public function destroy(Language $language)
     {
-        //
+        $language->delete();
+        return redirect()->route('languages.index')->with('success', 'Jezik obrisan!');
     }
 }

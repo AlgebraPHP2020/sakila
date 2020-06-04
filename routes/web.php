@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource('languages', 'LanguageController');
 Route::resource('actors', 'ActorsController');
 Route::get('/glumci', "ActorsController@index");
 

@@ -8,6 +8,9 @@ $ php artisan config:cache
 $ php artisan make:seeder ActorSeeder
 php artisan db:seed --class=ActorSeeder
 
+Za seedati sve tablice pokreni:
+php artisan db:seed 
+
 
 
 
