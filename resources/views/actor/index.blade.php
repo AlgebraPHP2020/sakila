@@ -39,7 +39,7 @@
         <a href='{{url("/actors/{$g->actor_id}/edit")}}'>
             <span class="label label-info">Edit</span></a>
          
-            <form class="form-inline" name="actor_delete" action="{{url("/actors/{$g->actor_id}")}}" method="POST" enctype="multipart/form-data">
+            <form style="display:inline" class="form-inline" name="actor_delete" action="{{url("/actors/{$g->actor_id}")}}" method="POST" enctype="multipart/form-data">
             @method('delete')
             @csrf
             <button type="submit" class="btn btn-danger">
