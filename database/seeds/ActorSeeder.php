@@ -1214,8 +1214,8 @@ class ActorSeeder extends Seeder
 	),
 );
 
-    DB::table('actor')->delete();
-    DB::table('actor')->insert($_actor);
+    DB::table('actors')->delete();
+    DB::table('actors')->insert($_actor);
     }
 }
 /*
