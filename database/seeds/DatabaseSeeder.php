@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UserSeeder::class);
-        $this->call(ActorSeeder::class);
         $this->call(LanguageSeeder::class);
         $this->call(FilmSeeder::class);
+        $this->call(ActorSeeder::class);
     }
 }

@@ -18,7 +18,7 @@ class FilmSeeder extends Seeder
 		"title" => "ACADEMY DINOSOURAUR",
 		"description" => "A Epic Drama of a Feminist And a Mad Scientist who must Battle a Teacher in The Canadian Rockies",
 		"release_year" => $f->year($max='now'),//"2006",
-		"language_id" => 1,
+		"language_id" => $f->numberBetween(1,6),//"1,2,3,4,5,6"
 		"original_language_id" => NULL,
 		"rental_duration" => 6,
 		"rental_rate" => 0.99,

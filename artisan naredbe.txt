@@ -11,6 +11,38 @@ php artisan db:seed --class=ActorSeeder
 Za seedati sve tablice pokreni:
 php artisan db:seed 
 
+----------------------
+
+php artisan tinker
+
+// kreiraj novi prazan model Film
+$f1=new Film
+
+// pronadji film koji ima ID=1  // misli se na PK
+$f1-find(1);
+
+// dohvati 10 filmova
+// poredaj ih po replacement cost svojstvu
+// odaberi samo one gdje je rental duration veci od 4
+$f1->take(10)->orderBy('replacement_cost')->where('rental_duration','>', 4)->get()
+
+
+-----------------------
+          UNIT TESTING
+$ php artisan make:test FilmTest --unit
+Test created successfully.
+// /tests/unit
+
+-----------------------
+           FEATURE TEST 
+$ php artisan make:test FilmTest
+Test created successfully.
+
+// /tests/feature
+-----------------------
+E2E test (end2end) //recimo TRAVIS CI
+
+
 
 
 
