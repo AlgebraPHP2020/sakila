@@ -9,18 +9,27 @@ use Tests\TestCase;
 
 class FilmTest extends TestCase {
 
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+ public function testFilmDodajNovi() {
+        $response = $this->get('/films/create');
+        $response->assertStatus(200)
+                ->assertSee('Dodaj film');    
+ }
+    
     public function testFilmIndex() {
         $response = $this->get('/films');
-        $response->assertStatus(200);
-
-        $this->visit('/films')
+        $response->assertStatus(200)
+                ->assertSee('Lista filmova')
+                ->assertDontSee('error');
+        
+        
+        
+       //TODO rjesi ove testove
+       /*
+        $this-> visit('/films')
                 ->see('Lista filmova')
                 ->dontSee('Error');
+        * 
+        */
     }
 
     public function testExample() {
