@@ -36,7 +36,7 @@
 
 
     <li>
-        <a href='{{url("/actors/{$g->actor_id}/edit")}}'>
+        <a id="actor-{{$g->actor_id}}-edit" href='{{url("/actors/{$g->actor_id}/edit")}}'>
             <span class="label label-info">Edit</span></a>
          
             <form style="display:inline" class="form-inline" name="actor_delete" action="{{url("/actors/{$g->actor_id}")}}" method="POST" enctype="multipart/form-data">
