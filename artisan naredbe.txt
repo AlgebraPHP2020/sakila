@@ -30,12 +30,18 @@ $f1->take(10)->orderBy('replacement_cost')->where('rental_duration','>', 4)->get
 -----------------------
           UNIT TESTING
 $ php artisan make:test FilmTest --unit
+
+php artisan test
+C:/Users/Algebra/Code/sakila/vendor/bin/phpunit.bat --configuration phpunit.xml --testsuite Unit
+
 Test created successfully.
 // /tests/unit
 
 -----------------------
            FEATURE TEST 
 $ php artisan make:test FilmTest
+$ C:/Users/Algebra/Code/sakila/vendor/bin/phpunit.bat --configuration phpunit.xml --testsuite Feature
+
 Test created successfully.
 
 // /tests/feature
