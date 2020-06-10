@@ -44,9 +44,16 @@ $ C:/Users/Algebra/Code/sakila/vendor/bin/phpunit.bat --configuration phpunit.xm
 
 Test created successfully.
 
-// /tests/feature
+// /tests/Browser
 -----------------------
+--------------       DUSK TESTIRANJE       <---------
 E2E test (end2end) //recimo TRAVIS CI
+
+Tri koraka za pokretanje browser testa:
+composer require --dev laravel/dusk
+php artisan dusk:install
+php artisan dusk
+
 
 
 
