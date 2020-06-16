@@ -19,5 +19,13 @@ class Language extends Model
      * @var string
      */
     protected $primaryKey = 'language_id';
+      
+    /**
+     * Get the comments for the blog post.
+     */
+    public function films()
+    {
+        return $this->hasMany('App\Film','original_language_id','language_id' );
+    }
     
 }
