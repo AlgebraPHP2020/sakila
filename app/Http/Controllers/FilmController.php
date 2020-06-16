@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Film;
+use App\Language;
 use Illuminate\Http\Request;
 
 class FilmController extends Controller
@@ -17,7 +18,32 @@ class FilmController extends Controller
         $filmovi= Film::all();
         return view('films.index', compact('filmovi'));
     }
-
+     /**
+     * prikazi filmove na originalnom jeziku
+     * @return \Illuminate\Http\Response
+     */   
+        public function listbyoriglang(Language $lang)
+    {
+         /*$lang=new Language
+[!] Aliasing 'Language' to 'App\Language' for this Tinker session.
+=> App\Language {#4048}
+>>> $lang->find(1)->films()*/
+            
+        //$filmovi= Film::all();
+       // dd($lang);
+        $filmovi=$lang->films()->get();
+       // dd($filmovi);
+        return view('films.listbylang', compact('filmovi'));
+    }
+     /**
+     * prikazi filmove prevedene na neki jezik
+     * @return \Illuminate\Http\Response
+     */   
+        public function listbytranslang(Language $lang)
+    {
+        $filmovi=$lang->films_prevedeni()->get();
+        return view('films.listbylang', compact('filmovi'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +51,7 @@ class FilmController extends Controller
      */
     public function create()
     {
-       $lista_jezika= \App\Language::all()->sortBy('name');
+       $lista_jezika= Language::all()->sortBy('name');
        return view('films.create',compact('lista_jezika'));
     }
 
@@ -43,7 +69,7 @@ class FilmController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Film  $film
+     * @param  Film  $film
      * @return \Illuminate\Http\Response
      */
     public function show(Film $film)
@@ -54,7 +80,7 @@ class FilmController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Film  $film
+     * @param  Film  $film
      * @return \Illuminate\Http\Response
      */
     public function edit(Film $film)
@@ -66,7 +92,7 @@ class FilmController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Film  $film
+     * @param  Film  $film
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Film $film)
@@ -77,7 +103,7 @@ class FilmController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Film  $film
+     * @param  Film  $film
      * @return \Illuminate\Http\Response
      */
     public function destroy(Film $film)
