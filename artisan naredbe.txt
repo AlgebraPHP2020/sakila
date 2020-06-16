@@ -25,6 +25,8 @@ $f1-find(1);
 // poredaj ih po replacement cost svojstvu
 // odaberi samo one gdje je rental duration veci od 4
 $f1->take(10)->orderBy('replacement_cost')->where('rental_duration','>', 4)->get()
+$f1->find(1)->actors()->count();
+
 
 
 -----------------------
@@ -55,6 +57,12 @@ php artisan dusk:install
 php artisan dusk
 
  php artisan dusk:make ActorTest
+
+
+$a=new Actor;
+$a->find(1)->films()->get()
+
+
 
 
 
