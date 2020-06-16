@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title', 'Detalji jezika')
+@section('title', 'detalji')
 @section('content_header')
-<h1>Predmeti</h1>
+<h1>{{$film->title}}</h1>
 @stop
 
 
@@ -15,14 +15,36 @@
 
 
 <div class="border border-info rounded-md">
-    <span class="alert-success"> {{$jez->name}} {{$jez->last_update}}</span><br>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                <br>
-                <p>
-                    <a href='{{route('languages.index')}}'> &nbsp;&nbsp;
-                     <i class="fas fa-hand-point-left"></i></a> 
-                </p>
-                
+    <h1 class="alert-success"> {{$film->title}} ({{$film->release_year}})</h1><br>
+
+    <p class="rounded-md">{{$film->description}}</p>
+    <p>
+    <div class="alert alert-success" role="alert">
+        Originalni jezik filma: <a href="/languages/{{$film->original_language_id}}" class="alert-link">
+            {{$film->lang_orig()->first()->name}}</a>
+    </div>
+    <div class="alert alert-success" role="alert">
+        Prijevod filma:         <a href="/languages/{{$film->language_id}}" class="alert-link">
+            {{$film->lang_trans()->first()->name}}</a>
+    </div>
+    Duljina najma: <span class="btn btn-outline-success">{{$film->rental_duration}}</span> <br>
+    Cijena po danu: <span class="btn btn-outline-success">€{{$film->rental_rate}} </span><br>
+    Ukupna cijena: <span class="btn btn-outline-success">€{{$film->rental_rate*$film->rental_duration}} </span><br>        
+    </p>
+
+    Ukupno glumaca:<span class="btn btn-outline-success"> {{$film->actors()->count()}}</span>
+    @foreach ($film->actors()->get() as $g)
+    <p style="text-indent: 50px;">
+        <i class="far fa-user big"></i><a href='{{url("/actors/{$g->actor_id}")}}'> {{$g->first_name }} {{$g->last_name }}</a>
+    </p> 
+    @endforeach
+
+
+    <p>
+        <a href='{{route('films.index')}}'> Natrag na listu filmova
+            <i class="fas fa-hand-point-left"></i></a> 
+    </p>
+
 
 </div>
 

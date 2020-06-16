@@ -37,4 +37,8 @@ class Actor extends Model
     {
         return ucfirst(strtolower($value));
     }
+        public function films()
+    {
+        return $this->belongsToMany('App\Film','film_actor','actor_id','film_id');   
+    }
 }
