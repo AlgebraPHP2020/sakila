@@ -16,8 +16,8 @@ install:
 
 before_script:
   - sudo mysql -e 'create database sakila;'
-  - sudo mysql -e "CREATE USER 'sakila@localhost' IDENTIFIED BY 'sakila';"
-  - sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'sakila@localhost' WITH GRANT OPTION;"
+  - sudo mysql -e "CREATE USER 'sakila'@'localhost' IDENTIFIED BY 'sakila';"
+  - sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'sakila'@'localhost' WITH GRANT OPTION;"
   - sudo mysql -e 'FLUSH PRIVILEGES;'
   - composer self-update
   #- composer update
