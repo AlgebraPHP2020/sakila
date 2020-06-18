@@ -17,6 +17,7 @@ services:
 install:
    - cp .env.travis .env
    - travis_retry composer install --no-interaction --prefer-dist --no-suggest
+   - php artisan dusk:chrome-driver
 
 before_script:
   - sudo mysql -e 'create database sakila;'
@@ -26,7 +27,7 @@ before_script:
   - composer self-update
   #- composer update
   - composer require --dev phpunit/phpunit ^8.5
-  #- composer install --no-interaction
+  - composer install --no-interaction
   - php artisan migrate
   - php artisan db:seed
   # nepotrebno dodati usera jer smo ga vec dodali putem UserSeedera
