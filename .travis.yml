@@ -4,7 +4,7 @@ php:
    #- nightly
 sudo: required
 #dist: trusty
-dist: precise
+dist: xenial
 
 addons:
    chrome: stable
