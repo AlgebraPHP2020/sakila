@@ -1,7 +1,7 @@
 language: php
 php:
    - 7.4snapshot
-   - nightly
+   #- nightly
 sudo: required
 dist: trusty
 
@@ -15,7 +15,7 @@ install:
 before_script:
   - mysql -e 'create database sakila;'
   - composer self-update
-  - composer update
+  #- composer update
   - composer require --dev phpunit/phpunit ^8.5
   #- composer install --no-interaction
   - php artisan migrate
