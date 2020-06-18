@@ -8,7 +8,7 @@ dist: bionic
 
 addons:
    chrome: stable
-#   mariadb: 10.4
+   mariadb: 10.4
 
 install:
    - cp .env.travis .env
