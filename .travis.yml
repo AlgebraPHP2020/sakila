@@ -6,7 +6,7 @@ sudo: required
 dist: trusty
 
 addons:
-   chrome: stable
+   chrome: 74
    mariadb: 10.4
 
 install:
@@ -25,13 +25,13 @@ before_script:
   #- mysql -e "use fakultet2018; INSERT INTO fakultet2018.users (name, email, email_verified_at, password, remember_token, created_at, updated_at) VALUES('Predrag Mrvic', 'pmrvic@123.com', NULL, '$2y$10$unv5NFvl89zxAhdy5.cnFOae8S01aoFdO73X..qPECtQV5YCrCPSG', 'qwBUkyVl0n5ykKgUfLy67f1pYZt6JrSzQFCgOo4oUv8XcBVXxPB1susHuvRe', '2019-01-08 19:44:24.0', '2019-01-08 19:44:24.0');"
   - php artisan dusk:install
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-  - chromedriver-update 73.0.3683.68
+  #- chromedriver-update 73.0.3683.68
   - php artisan serve &
 
 script:
   #- vendor/bin/phpunit --debug --bootstrap vendor/autoload.php tests/
   - vendor/bin/phpunit --debug --bootstrap vendor/autoload.php --configuration ./phpunit.xml
-  - php artisan dusk:chrome-driver 73
+  - php artisan dusk:chrome-driver 74
   #- php artisan dusk:chrome-driver 83
   - php artisan dusk
   
