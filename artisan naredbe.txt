@@ -1,0 +1,72 @@
+ php artisan make:model Actor --migration
+php artisan migrate
+php artisan migrate:rollback
+
+Ako mjenjamo timezone mramo ocistiti cache:
+$ php artisan config:cache
+
+$ php artisan make:seeder ActorSeeder
+php artisan db:seed --class=ActorSeeder
+
+Za seedati sve tablice pokreni:
+php artisan db:seed 
+
+----------------------
+
+php artisan tinker
+
+// kreiraj novi prazan model Film
+$f1=new Film
+
+// pronadji film koji ima ID=1  // misli se na PK
+$f1-find(1);
+
+// dohvati 10 filmova
+// poredaj ih po replacement cost svojstvu
+// odaberi samo one gdje je rental duration veci od 4
+$f1->take(10)->orderBy('replacement_cost')->where('rental_duration','>', 4)->get()
+$f1->find(1)->actors()->count();
+
+
+
+-----------------------
+          UNIT TESTING
+$ php artisan make:test FilmTest --unit
+
+php artisan test
+C:/Users/Algebra/Code/sakila/vendor/bin/phpunit.bat --configuration phpunit.xml --testsuite Unit
+
+Test created successfully.
+// /tests/unit
+
+-----------------------
+           FEATURE TEST 
+$ php artisan make:test FilmTest
+$ C:/Users/Algebra/Code/sakila/vendor/bin/phpunit.bat --configuration phpunit.xml --testsuite Feature
+
+Test created successfully.
+
+// /tests/Browser
+-----------------------
+--------------       DUSK TESTIRANJE       <---------
+E2E test (end2end) //recimo TRAVIS CI
+
+Tri koraka za pokretanje browser testa:
+composer require --dev laravel/dusk
+php artisan dusk:install
+php artisan dusk
+
+ php artisan dusk:make ActorTest
+
+
+$a=new Actor;
+$a->find(1)->films()->get()
+
+
+
+
+
+
+
+
+

@@ -66,8 +66,9 @@ return [
     | ahead and set this to a sensible default for you out of the box.
     |
     */
-
-    'timezone' => 'UTC',
+//https://www.php.net/manual/en/timezones.europe.php
+   // 'timezone' => 'UTC',
+     'timezone' => 'Europe/Zagreb',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +81,8 @@ return [
     |
     */
 
-    'locale' => 'en',
+    //'locale' => 'en',  //promjena jezika, Mrvic, 02.06.2020
+    'locale' => 'hr',
 
     /*
     |--------------------------------------------------------------------------

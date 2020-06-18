@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/AlgebraPHP2020/sakila.svg?branch=master)](https://travis-ci.org/AlgebraPHP2020/sakila.svg)
+[![Heroku](https://heroku-badges.herokuapp.com/?app=sakila2020)](http://sakila2020.herokuapp.com/)
+
 # sakila
 ## Sakila Github:
 [Sakila Github](https://github.com/AlgebraPHP2020/sakila)
@@ -6,7 +9,11 @@ https://laravel.com/docs/7.x
 
 ## Sakila Travis CI
 https://travis-ci.org/github/AlgebraPHP2020/sakila
-<img src="https://travis-ci.org/github/AlgebraPHP2020/sakila.svg?branch=master" alt="build:passed">
+
+
+## HEROKU
+https://sakila2020.herokuapp.com/
+[Sakila HEROKU deployment](https://sakila2020.herokuapp.com/)
 
 
 ## Postrupak instalacije:
