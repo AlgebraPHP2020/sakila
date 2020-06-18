@@ -6,7 +6,7 @@ sudo: required
 dist: trusty
 
 addons:
-   chrome: 73
+   chrome: stable
    mariadb: 10.4
 
 install:
@@ -26,12 +26,13 @@ before_script:
   - php artisan dusk:install
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   #- chromedriver-update 73.0.3683.68
+  - google-chrome --version
   - php artisan serve &
 
 script:
   #- vendor/bin/phpunit --debug --bootstrap vendor/autoload.php tests/
   - vendor/bin/phpunit --debug --bootstrap vendor/autoload.php --configuration ./phpunit.xml
-  - php artisan dusk:chrome-driver 73
+  #- php artisan dusk:chrome-driver 74
   #- php artisan dusk:chrome-driver 83
   - php artisan dusk
   
