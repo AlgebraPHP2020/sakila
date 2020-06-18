@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Svi predmeti')
+@section('title', 'Svi glumci')
 @section('content_header')
 <h1>Predmeti</h1>
 @stop

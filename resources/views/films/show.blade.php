@@ -11,7 +11,7 @@
 </div>
 @endif 
 
-<h3>Detalji jezika:</h3>
+<h3>Detalji filma:</h3>
 
 
 <div class="border border-info rounded-md">
