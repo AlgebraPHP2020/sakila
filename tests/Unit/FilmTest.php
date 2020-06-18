@@ -5,7 +5,7 @@ namespace Tests\Unit;
 
 
 use App\Film;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class FilmTest extends TestCase
