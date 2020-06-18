@@ -6,7 +6,7 @@ sudo: required
 dist: trusty
 
 addons:
-   chrome: 74
+   chrome: 73
    mariadb: 10.4
 
 install:
@@ -31,7 +31,7 @@ before_script:
 script:
   #- vendor/bin/phpunit --debug --bootstrap vendor/autoload.php tests/
   - vendor/bin/phpunit --debug --bootstrap vendor/autoload.php --configuration ./phpunit.xml
-  - php artisan dusk:chrome-driver 74
+  - php artisan dusk:chrome-driver 73
   #- php artisan dusk:chrome-driver 83
   - php artisan dusk
   
