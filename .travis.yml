@@ -2,13 +2,17 @@ language: php
 php:
    - 7.4snapshot
    #- nightly
+   
 sudo: required
-#dist: trusty
+
 dist: xenial
 
 addons:
    chrome: stable
    mariadb: 10.4
+
+services:
+  - mysql
 
 install:
    - cp .env.travis .env
