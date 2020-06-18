@@ -1,8 +1,11 @@
 <?php
 
 namespace Tests\Unit;
-use App\Film;
 //use PHPUnit\Framework\TestCase;
+
+
+use App\Film;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
 class FilmTest extends TestCase
