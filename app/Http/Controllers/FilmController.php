@@ -33,7 +33,8 @@ class FilmController extends Controller
        // dd($lang);
         $filmovi=$lang->films()->get();
        // dd($filmovi);
-        return view('films.listbylang', compact('filmovi'));
+        $subtitle="Lista filmova na originalnom jeziku ";
+        return view('films.listbylang', compact('filmovi','lang','subtitle'));
     }
      /**
      * prikazi filmove prevedene na neki jezik
@@ -42,7 +43,8 @@ class FilmController extends Controller
         public function listbytranslang(Language $lang)
     {
         $filmovi=$lang->films_prevedeni()->get();
-        return view('films.listbylang', compact('filmovi'));
+        $subtitle="Lista filmova prevedenih na jezik ";
+        return view('films.listbylang', compact('filmovi','lang','subtitle'));
     }
     /**
      * Show the form for creating a new resource.
