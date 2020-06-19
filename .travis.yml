@@ -7,14 +7,19 @@ addons:
   chrome: stable
 
 install:
+  - sudo mysql -e 'create database testing;'
   - cp .env.travis .env
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - php artisan key:generate
   - php artisan dusk:chrome-driver
+  - php artisan dusk:install
+  - php artisan migrate
+  - php artisan db:seed
 
 before_script:
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
 
 script:
+  - vendor/bin/phpunit --debug --bootstrap vendor/autoload.php --configuration ./phpunit.xml  
   - php artisan dusk
