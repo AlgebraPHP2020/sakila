@@ -31,4 +31,10 @@ class Film extends Model
         return $this->belongsToMany('App\Actor','film_actor','film_id','actor_id');
         
     }
+        public function zanr()
+    {
+        //return $this->belongsToMany('App\Role', 'role_user', 'user_id', 'role_id');
+        return $this->belongsToMany('App\Category','film_category','film_id','category_id');
+        
+    }
 }

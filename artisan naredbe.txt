@@ -62,6 +62,17 @@ php artisan dusk
 $a=new Actor;
 $a->find(1)->films()->get()
 
+---------------
+NAREDBA ZA TESTIRANJE IZ KONZOLE:
+./vendor/bin/phpunit.bat --configuration phpunit.xml
+
+
+-------------------
+Izlistanje samo ruta cije ime pocinje sa "zan":
+php artisan route:list --name zan
+
+ $c2=Category::find(6)
+$c1->filmovi()->take(2)->get();
 
 
 

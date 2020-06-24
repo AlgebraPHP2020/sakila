@@ -88,6 +88,8 @@
                 <div class="links">
                     <a href="{{url("/films")}}">Filmovi</a>
                     <a href="{{url("/actors")}}">Glumci</a>
+                     <a href="{{url("/zanrovi")}}">Žanrovi</a>
+                    <a href="{{url("/languages")}}">Jezici</a>                   
                     <a href="https://travis-ci.org/github/AlgebraPHP2020/sakila">Travis CI</a>
                     <a href="http://sakila2020.herokuapp.com/">Heroku</a>
                     <a href="https://github.com/AlgebraPHP2020/sakila">GitHub Sakila</a>

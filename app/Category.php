@@ -30,4 +30,10 @@ class Category extends Model
      * @var string
      */
     protected $primaryKey = 'category_id';
+    
+    public function filmovi()
+    {
+        //return $this->belongsToMany('App\Role', 'role_user', 'user_id', 'role_id');
+        return $this->belongsToMany('App\Film','film_category','category_id','film_id');  
+    }
 }

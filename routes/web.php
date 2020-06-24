@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource('zanrovi', 'CategoryController');
 Route::resource('films', 'FilmController');
 Route::get('/films/lang/{lang}', "FilmController@listbyoriglang");
 Route::get('/films/langtrans/{lang}', "FilmController@listbytranslang");
