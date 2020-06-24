@@ -63,9 +63,59 @@ class FilmController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Film $film )
     {
-        //
+        /*
+        dd($request);
+         *  +request: Symfony\Component\HttpFoundation\ParameterBag {#44 ▼
+    #parameters: array:13 [▼
+      "_token" => "dgg5p2eoevosp2WsmfF8vFGZG9FiNzKhyGPVkAs5"
+      "title<" => "we"
+      "description" => "fdd"
+      "release_year" => "1950"
+      "language_id" => "5"
+      "original_language_id" => "2"
+      "rental_duration" => "1"
+      "rental_rate" => "0.00"
+      "length" => "0.00"
+      "replacement_cost" => "0.00"
+      "rating" => "PG-13"
+      "special_features" => array:2 [▼
+        0 => "Commentaries"
+        1 => "Behind the Scenes"
+      ]
+      "dodaj_film_sbm" => "Dodaj novi film"
+    ]
+  }
+         * 
+         */
+     $validatedData = $request->validate([
+        'title'  => 'required|string|max:128|alpha',
+        'release_year'   => 'required|numeric|between:1950,2019',
+        'language_id'   => 'required|numeric|between:1,6',         
+    ]);
+     $film->title = $request->input('title');
+     $film->description = $request->input('description');
+     $film->release_year = $request->input('release_year');
+     $film->language_id = $request->input('language_id');
+     $film->original_language_id = $request->input('original_language_id');
+     $film->rental_duration = $request->input('rental_duration');
+     $film->rental_rate = $request->input('rental_rate');
+     $film->length = $request->input('length');
+     $film->replacement_cost = $request->input('replacement_cost');
+     $film->rating = $request->input('rating');     
+     
+     // Example #1 implode() example
+     // $array = array('lastname', 'email', 'phone');
+     // $comma_separated = implode(",", $array);
+     // echo $comma_separated; // lastname,email,phone
+     $film->special_features =  $tags = implode(',', $request->input('special_features'));  
+     
+     
+     $film->save(); // sacuvaj u bazu podataka
+
+     return redirect()->route('films.index')->with('success', 'Film added!');
+        
     }
 
     /**

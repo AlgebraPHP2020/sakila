@@ -23,12 +23,12 @@
 <h3>Dodaj film:</h3>
 
 
-<form method="POST" action="/languages" enctype="multipart/form-data">
+<form method="POST" action="/films" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label for="title<"> Naziv jezika:</label>
         <br>
-        <input maxlength="128" type="text" name="title<" required="true"
+        <input maxlength="128" type="text" name="title" required="true"
                value=""><br>
         
         <label for="description<"> Opis:</label>
@@ -71,30 +71,45 @@
             
            <label for="length"> length:</label>
         <br>
+        
         <input maxlength="3" type="number" name="length" required="true" min="0" max="10" step="0.25" value="0.00"><br>
+        
+        <!-- replacement_cost -->
+           <label for="replacement_cost"> replacement_cost:</label>
+        <br>
+        <input maxlength="3" type="number" name="replacement_cost" required="true" min="0" max="10" step="0.25" value="0.00"><br>
+        
+        <!-- rating radio button  'G','PG','PG-13','R','NC-17' -->
+        
+          <p>Odaberite rating:</p>
+  <input type="radio" id="rating_G" name="rating" value="G">
+  <label for="rating_G">G</label><br>
+  <input type="radio" id="rating_PG" name="rating" value="PG">
+  <label for="rating_PG">PG</label><br>  
+  <input type="radio" id="rating_PG13" name="rating" value="PG-13">
+  <label for="rating_PG13">PG-13</label><br>
+    <input type="radio" id="rating_R" name="rating" value="R">
+  <label for="rating_R">R</label><br>
+    <input type="radio" id="rating_NC17" name="rating" value="NC-17">
+  <label for="rating_NC17">NC-17</label><br> <br>
 
-       /*
-Name=rental_duration<|||>OldName=rental_duration<|||>DataType=0<|||>OldDataType=50<|||>LengthSet=3<|||>Unsigned=1<|||>AllowNull=0<|||>ZeroFill=0<|||>LengthCustomized=0<|||>DefaultType=0<|||>DefaultText=<|||>OnUpdateType=0<|||>OnUpdateText=<|||>Comment=<|||>Charset=<|||>Collation=<|||>Expression=<|||>Virtuality=<|||>Status=0
-Name=rental_rate<|||>OldName=rental_rate<|||>DataType=9<|||>OldDataType=50<|||>LengthSet=4,2<|||>Unsigned=0<|||>AllowNull=0<|||>ZeroFill=0<|||>LengthCustomized=0<|||>DefaultType=1<|||>DefaultText=4.99<|||>OnUpdateType=0<|||>OnUpdateText=<|||>Comment=<|||>Charset=<|||>Collation=<|||>Expression=<|||>Virtuality=<|||>Status=0
-Name=length<|||>OldName=length<|||>DataType=1<|||>OldDataType=50<|||>LengthSet=5<|||>Unsigned=1<|||>AllowNull=1<|||>ZeroFill=0<|||>LengthCustomized=0<|||>DefaultType=0<|||>DefaultText=<|||>OnUpdateType=0<|||>OnUpdateText=<|||>Comment=<|||>Charset=<|||>Collation=<|||>Expression=<|||>Virtuality=<|||>Status=0
-Name=replacement_cost<|||>OldName=replacement_cost<|||>DataType=9<|||>OldDataType=50<|||>LengthSet=5,2<|||>Unsigned=0<|||>AllowNull=0<|||>ZeroFill=0<|||>LengthCustomized=0<|||>DefaultType=1<|||>DefaultText=19.99<|||>OnUpdateType=0<|||>OnUpdateText=<|||>Comment=<|||>Charset=<|||>Collation=<|||>Expression=<|||>Virtuality=<|||>Status=0
-Name=rating<|||>OldName=rating<|||>DataType=44<|||>OldDataType=50<|||>LengthSet='G','PG','PG-13','R','NC-17'<|||>Unsigned=0<|||>AllowNull=1<|||>ZeroFill=0<|||>LengthCustomized=0<|||>DefaultType=4<|||>DefaultText=G<|||>OnUpdateType=0<|||>OnUpdateText=<|||>Comment=<|||>Charset=<|||>Collation=utf8mb4_general_ci<|||>Expression=<|||>Virtuality=<|||>Status=0
-Name=special_features<|||>OldName=special_features<|||>DataType=45<|||>OldDataType=50<|||>LengthSet='Trailers','Commentaries','Deleted Scenes','Behind the Scenes'<|||>Unsigned=0<|||>AllowNull=1<|||>ZeroFill=0<|||>LengthCustomized=0<|||>DefaultType=0<|||>DefaultText=<|||>OnUpdateType=0<|||>OnUpdateText=<|||>Comment=<|||>Charset=<|||>Collation=utf8mb4_general_ci<|||>Expression=<|||>Virtuality=<|||>Status=0
-Name=last_update<|||>OldName=last_update<|||>DataType=22<|||>OldDataType=50<|||>LengthSet=<|||>Unsigned=0<|||>AllowNull=0<|||>ZeroFill=0<|||>LengthCustomized=0<|||>DefaultType=4<|||>DefaultText=current_timestamp()<|||>OnUpdateType=4<|||>OnUpdateText=current_timestamp()<|||>Comment=<|||>Charset=<|||>Collation=<|||>Expression=<|||>Virtuality=<|||>Status=0
-Name=created_at<|||>OldName=created_at<|||>DataType=22<|||>OldDataType=50<|||>LengthSet=<|||>Unsigned=0<|||>AllowNull=1<|||>ZeroFill=0<|||>LengthCustomized=0<|||>DefaultType=0<|||>DefaultText=<|||>OnUpdateType=0<|||>OnUpdateText=<|||>Comment=<|||>Charset=<|||>Collation=<|||>Expression=<|||>Virtuality=<|||>Status=0
-Name=updated_at<|||>OldName=updated_at<|||>DataType=22<|||>OldDataType=50<|||>LengthSet=<|||>Unsigned=0<|||>AllowNull=1<|||>ZeroFill=0<|||>LengthCustomized=0<|||>DefaultType=0<|||>DefaultText=<|||>OnUpdateType=0<|||>OnUpdateText=<|||>Comment=<|||>Charset=<|||>Collation=<|||>Expression=<|||>Virtuality=<|||>Status=0
+  
+  <!-- special_features CHECKBOX 'Trailers','Commentaries','Deleted Scenes','Behind the Scenes' -->
+  <p>Odaberite dodatke:</p>
+ <input type="checkbox" id="Trailers" name="special_features[]" value="Trailers">
+<label for="Trailers"> Trailers</label><br>
+<input type="checkbox" id="Commentaries" name="special_features[]" value="Commentaries">
+<label for="Commentaries"> Commentaries</label><br>
+<input type="checkbox" id="DeletedScenes" name="special_features[]" value="Deleted Scenes">
+<label for="DeletedScenes"> Deleted Scenes</label><br>  
+<input type="checkbox" id="BehindtheScenes" name="special_features[]" value="Behind the Scenes">
+<label for="BehindtheScenes">Behind the Scenes</label><br>  
+        
 
-       */
-        
-        
-        
-        
-        
-        
         
     </div>
     <div class="form-group">
-        <input type="submit" name="actor_sbm" value="Dodaj novi jezik">
+        <input type="submit" name="dodaj_film_sbm" value="Dodaj novi film">
     </div>
 </form>
 
