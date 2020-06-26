@@ -64,7 +64,7 @@
         <input maxlength="3" type="number" name="rental_duration" required="true"
                value=""><br>
      
-           <label for="rental_rate"> drental rate:</label>
+           <label for="rental_rate"> rental rate:</label>
         <br>
         <input maxlength="3" type="number" name="rental_rate" required="true" min="0" max="10" step="0.25" value="0.00"><br>
         
@@ -77,7 +77,7 @@
         <!-- replacement_cost -->
            <label for="replacement_cost"> replacement_cost:</label>
         <br>
-        <input maxlength="3" type="number" name="replacement_cost" required="true" min="0" max="10" step="0.25" value="0.00"><br>
+        <input maxlength="3" type="number" name="replacement_cost" required="true" min="0" max="100" step="0.25" value="0.00"><br>
         
         <!-- rating radio button  'G','PG','PG-13','R','NC-17' -->
         

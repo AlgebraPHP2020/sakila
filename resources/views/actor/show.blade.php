@@ -3,7 +3,24 @@
 @section('content_header')
 <h1>Predmeti</h1>
 @stop
-
+<?php
+//los nacin, kod treba nastojati ne ubacivati u view vec u kontroler ili model
+function ikonica($zanr){
+    switch ($zanr) {
+        case 'Music':  $icon= '<i class="fas fa-music"></i>'; break;
+        case 'Games':  $icon= '<i class="fas fa-gamepad"></i>'; break;
+        case 'Comedy':  $icon= '<i class="fas fa-theater-masks"></i>'; break;
+        case 'Action':  $icon= '<i class="fas fa-bomb"></i>'; break;
+        case 'Drama':  $icon= '<i class="fas fa-house-damage"></i>'; break;
+        case 'Documentary':  $icon= '<i class="fas fa-book"></i>'; break;
+        case 'Horror':  $icon= '<i class="fas fa-biohazard"></i>'; break;
+        case 'Sci-Fi':  $icon= '<i class="fas fa-robot"></i>'; break;
+                                                        
+        default:$icon=$zanr; break;
+    }
+    return $icon;
+}
+?>
 
 @section('content')
 @if (Session::has('message'))
@@ -38,7 +55,7 @@
                         <li class="list-group-item  list-group-item-success">Lista filmova u kojima glumi:</li>
                         @foreach ($actor->films()->get() ?? '' as $f)
                         <li class="list-group-item"><a href='{{url("/films/{$f->film_id}")}}'>
-                                {{Str::title($f->title)}} ({{$f->release_year }})</a></li>
+                                {{Str::title($f->title)}} ({{$f->release_year }})  {!! ikonica($f->zanr()->first()->name) !!} {!!$f->zanr()->first()->ikonica()!!}</a></li>
                                 @endforeach
                     </ul>
                 </td></tr>

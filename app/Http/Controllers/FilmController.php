@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Film;
 use App\Language;
+use App\Category;
 use Illuminate\Http\Request;
 
 class FilmController extends Controller
@@ -90,7 +91,7 @@ class FilmController extends Controller
          * 
          */
      $validatedData = $request->validate([
-        'title'  => 'required|string|max:128|alpha',
+        'title'  => 'required|string|max:128',
         'release_year'   => 'required|numeric|between:1950,2019',
         'language_id'   => 'required|numeric|between:1,6',         
     ]);
@@ -109,11 +110,17 @@ class FilmController extends Controller
      // $array = array('lastname', 'email', 'phone');
      // $comma_separated = implode(",", $array);
      // echo $comma_separated; // lastname,email,phone
-     $film->special_features =  $tags = implode(',', $request->input('special_features'));  
+     $film->special_features =  implode(',', $request->input('special_features'));  
      
      
      $film->save(); // sacuvaj u bazu podataka
-
+/*
+     $comment = new App\Comment(['message' => 'A new comment.']);
+$post = App\Post::find(1);
+$post->comments()->save($comment);
+     */
+     $zanr= new Category(['name'=>'Animation']);
+     $film->zanr()->save($zanr);
      return redirect()->route('films.index')->with('success', 'Film added!');
         
     }
