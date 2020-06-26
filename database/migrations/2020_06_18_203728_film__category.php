@@ -16,6 +16,8 @@ class FilmCategory extends Migration {
             $table->smallInteger('film_id');    //int8
             $table->tinyInteger('category_id'); //int3
             $table->timestamps();
+            $table->primary(['film_id', 'category_id']);
+            $table->unique('film_id', 'jedinstvenifilm');
         });
     }
 

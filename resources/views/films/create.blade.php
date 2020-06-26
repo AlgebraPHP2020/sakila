@@ -104,7 +104,20 @@
 <label for="DeletedScenes"> Deleted Scenes</label><br>  
 <input type="checkbox" id="BehindtheScenes" name="special_features[]" value="Behind the Scenes">
 <label for="BehindtheScenes">Behind the Scenes</label><br>  
-        
+
+<label for="zanrovi">Odaberi žanr:</label><br>
+  <select name="zanrovi" id="zanrovi">
+    <optgroup label="Glavni zanrovi">
+      <option value="1">Action</option>
+      <option value="5">Comedy</option>
+    </optgroup>
+    <optgroup label="Svi zanrovi">
+ @foreach (App\Category::all() as $z)
+      <option value="{{$z->category_id}}">{{$z->name}}</option>
+ @endforeach   
+    </optgroup>
+  </select>
+  <br><br>
 
         
     </div>

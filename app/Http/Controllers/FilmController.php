@@ -112,14 +112,16 @@ class FilmController extends Controller
      // echo $comma_separated; // lastname,email,phone
      $film->special_features =  implode(',', $request->input('special_features'));  
      
-     
      $film->save(); // sacuvaj u bazu podataka
 /*
      $comment = new App\Comment(['message' => 'A new comment.']);
 $post = App\Post::find(1);
 $post->comments()->save($comment);
      */
-     $zanr= new Category(['name'=>'Animation']);
+     //$zanr= new Category(['name'=>'Animation']); // ne zelimo NOVU kategoriju
+     //$zanr= new Category(['category_id'=>6]);
+     $zanr= Category::find($request->input('zanrovi'));  // koristimo postojecu
+     
      $film->zanr()->save($zanr);
      return redirect()->route('films.index')->with('success', 'Film added!');
         
